@@ -7,11 +7,10 @@ import AppRouter from "./providers/router/ui/AppRouter";
 import {Navbar} from "widgets/Navbar";
 
 const App = () => {
-    const { theme, handleChangeTheme} = useTheme();
+    const { theme } = useTheme();
 
     return (
         <div className={classNames('app', {}, [theme])}>
-            <button onClick={handleChangeTheme}>Change theme</button>
 
             <Navbar/>
 
