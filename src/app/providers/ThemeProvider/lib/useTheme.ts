@@ -12,10 +12,12 @@ export function useTheme (): UseThemeResult {
   const handleChangeTheme = () => {
     const currentTheme = theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT
 
-    setTheme(currentTheme)
+    if (setTheme != null) {
+      setTheme(currentTheme)
+    }
 
     localStorage.setItem(LOCAL_STORAGE_THEME_KEY, currentTheme)
   }
 
-  return { theme, handleChangeTheme }
+  return <UseThemeResult>{ theme, handleChangeTheme }
 }
