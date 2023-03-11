@@ -8,24 +8,28 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 export function buildPlugins (
   { paths, isDev }: BuildOptions
 ): webpack.WebpackPluginInstance[] {
-  return [
+  const plugins = [
     new HTMLWebpackPlugin({
       template: paths.html
     }),
     new webpack.ProgressPlugin(),
     new MiniCssExtractPlugin({
-      // Какие названия будут у файлов и где будут располагаться
-      // Шаблон для получения файлов и содержимого. Делается дла кэширования
       filename: 'css/[name].[contenthash:8].css',
-      // Название для чанк. Когда будем разбивать на асинхронные чанки
       chunkFilename: 'css/[name].[contenthash:8].css'
     }),
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev)
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new BundleAnalyzerPlugin({
-      openAnalyzer: false
-    })
   ]
+
+  if (isDev) {
+    plugins.push(
+        new webpack.HotModuleReplacementPlugin(),
+        new BundleAnalyzerPlugin({
+          openAnalyzer: false
+        })
+    )
+  }
+
+  return plugins
 }
