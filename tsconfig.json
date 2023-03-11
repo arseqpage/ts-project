@@ -21,8 +21,11 @@
     }
   },
   "include": [
-    "./config/jest/setupTests.ts",
+    "./config",
+    "./config",
     "src",
+    "src/**/*.ts",
+    "src/**/*.tsx",
     ".eslintrc.js",
   ]
 }
