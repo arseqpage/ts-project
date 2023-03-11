@@ -14,23 +14,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Starting Node.js ${{ matrix.node-version }}
-        users: actions/setup-node@v1
-        with: ${{ matrix.node-version }}
-
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
       - name: install modules
         run: npm install
-
       - name: build project
         run: npm run build:prod
-
       - name: linting typescript
         run: npm run lint:ts
-
       - name: linting css
         run: npm run lint:scss
-
       - name: unit test
         run: npm run test:unit
-
       - name: unit test
         run: npm run test:unit
