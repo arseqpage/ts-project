@@ -1,12 +1,12 @@
-import { type BuildOptions } from './types/config'
+import { type BuildOptions } from './types/config';
 
-export function buildDevServer (options: BuildOptions) {
-  const { port, open } = options
+export function buildDevServer(options: BuildOptions) {
+    const { port, open } = options;
 
-  return {
-    port,
-    open,
-    historyApiFallback: true,
-    hot: true
-  }
+    return {
+        port,
+        open,
+        historyApiFallback: true,
+        hot: true,
+    };
 }

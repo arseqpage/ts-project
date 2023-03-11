@@ -1,7 +1,7 @@
-import PageError from './ui/PageError'
-import BugButton from './ui/BugButton'
+import PageError from './ui/PageError';
+import BugButton from './ui/BugButton';
 
 export {
-  PageError,
-  BugButton
-}
+    PageError,
+    BugButton,
+};

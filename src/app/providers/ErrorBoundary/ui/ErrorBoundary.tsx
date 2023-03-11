@@ -1,6 +1,6 @@
-import React, { type ErrorInfo, type ReactNode, Suspense } from 'react'
-import { withTranslation } from 'react-i18next'
-import PageError from 'widgets/PageError/ui/PageError'
+import React, { type ErrorInfo, type ReactNode, Suspense } from 'react';
+import { withTranslation } from 'react-i18next';
+import PageError from 'widgets/PageError/ui/PageError';
 
 interface ErrorBoundaryProps {
   children: ReactNode
@@ -11,36 +11,38 @@ interface ErrorBoundaryState {
 }
 
 class ErrorBoundary
-  extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
-  constructor (props: ErrorBoundaryProps) {
-    super(props)
-    this.state = { hasError: false }
-  }
-
-  // eslint-disable-next-line n/handle-callback-err
-  static getDerivedStateFromError (error: Error) {
-    // Update state so the next render will show the fallback UI.
-    return { hasError: true }
-  }
-
-  componentDidCatch (error: Error, errorInfo: ErrorInfo) {
-    // You can also log the error to an error reporting service
-    console.log(error, errorInfo)
-  }
-
-  render () {
-    const { hasError } = this.state
-    const { children } = this.props
-
-    if (this.state.hasError) {
-      // You can render any custom fallback UI
-      return <Suspense fallback={'...'}>
-        <PageError/>
-      </Suspense>
+    extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+    constructor(props: ErrorBoundaryProps) {
+        super(props);
+        this.state = { hasError: false };
     }
 
-    return this.props.children
-  }
+    static getDerivedStateFromError(error: Error) {
+    // Update state so the next render will show the fallback UI.
+        return { hasError: true };
+    }
+
+    componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    // You can also log the error to an error reporting service
+        console.log(error, errorInfo);
+    }
+
+    render() {
+        const { hasError } = this.state;
+        const { children } = this.props;
+
+        if (this.state.hasError) {
+            // You can render any custom fallback UI
+            return (
+                <Suspense fallback="...">
+                    <PageError />
+                </Suspense>
+            );
+        }
+
+        // eslint-disable-next-line react/destructuring-assignment
+        return this.props.children;
+    }
 }
 
-export default ErrorBoundary
+export default ErrorBoundary;
