@@ -7,6 +7,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 // have a look at the Quick start guide
 // for passing in lng and translations on init
 
+// eslint-disable-next-line no-void
 void i18n
     .use(Backend)
     .use(LanguageDetector)
