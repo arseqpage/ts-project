@@ -42,6 +42,7 @@ module.exports = {
       { markupOnly: true, ignoreAttribute: ['data-testid', 'to'] },
     ],
     'max-len': ['error', { ignoreComments: true }],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
   },
   globals: {
     __IS_DEV__: true,
