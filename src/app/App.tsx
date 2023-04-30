@@ -2,9 +2,6 @@
 import { Suspense, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-/* Styles */
-import './styles/index.scss';
-
 /* App */
 import { useTheme } from 'app/providers/ThemeProvider';
 
@@ -25,11 +22,6 @@ function App() {
         <div className={classNames('app', {}, [theme])}>
             <Suspense fallback="">
                 <Navbar />
-
-                <button onClick={() => { setIsOpen(true); }}>toggle</button>
-
-                <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>Okay</Modal>
-
                 <div className="content-page">
                     <Sidebar />
                     <AppRouter />

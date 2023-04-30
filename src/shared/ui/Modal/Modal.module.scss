@@ -7,6 +7,8 @@
   z-index: var(--modal-z-index);
 
   display: none;
+
+  color: var(--primary-color)
 }
 
 .overlay {
@@ -28,4 +30,14 @@
 
 .opened {
   display: block;
+}
+
+.Modal.dark {
+  --bg-color: #090949;
+  --primary-color: #04ff04;
+}
+
+.Modal.light {
+  --bg-color: #e8e8ea;
+  --primary-color: #0232c2;
 }
